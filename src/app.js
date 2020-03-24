@@ -6,14 +6,17 @@ const app = express();
 //Settings
 app.set('port', process.env.PORT || 3000);
 
+// Routes require
+const carreraRoutes = require('./routes/carrera');
+
 //Middleware
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 // Routes
-app.use( require('./routes/alumnos'));
-app.use(require('./routes/carrera'));
+// app.use( require('/alumno'));
+app.use('/carrera', carreraRoutes);
 
 //Server port
 app.listen(app.get('port'), () => {
