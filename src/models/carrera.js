@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = require('./database/database');
+const sequelize = require('../database/database');
 
-const carrera = sequelize.define('carrera' , {
+const carrera =  sequelize.define('carrera' , {
     id_carrera : {
         type : Sequelize.INTEGER,
         primaryKey: true
@@ -15,6 +15,6 @@ const carrera = sequelize.define('carrera' , {
     matricula : {
         type : Sequelize.STRING
     }
-},{ timestamps : flase} );
+},{ timestamps : false, freezeTableName: true}  );
 
 module.exports = carrera;

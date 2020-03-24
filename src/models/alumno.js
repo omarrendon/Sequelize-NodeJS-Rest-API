@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('./database/database');
+const sequelize = require('../database/database');
 
 const carrera = require('./carrera');
 
@@ -34,4 +34,4 @@ carrera.belongstTo(alumno, {
     sourceKey : 'id_carrera'
 })
 
-module.exports = usuario;
+module.exports = alumno;

@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended: false}));
 
 // Routes
 app.use( require('./routes/alumnos'));
-app.use( require('./routes/maestros'));
+app.use(require('./routes/carrera'));
 
 //Server port
 app.listen(app.get('port'), () => {
