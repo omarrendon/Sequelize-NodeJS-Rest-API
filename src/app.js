@@ -10,6 +10,7 @@ app.set('port', process.env.PORT || 3000);
 const carreraRoutes = require('./routes/carrera');
 const alumnoRoutes = require('./routes/alumnos');
 const maestroRoutes = require('./routes/maestros');
+const grupoRoutes = require('./routes/grupo');
 //Middleware
 app.use(morgan('dev'));
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(express.urlencoded({extended: false}));
 app.use('/alumno', alumnoRoutes);
 app.use('/carrera', carreraRoutes);
 app.use('/maestro', maestroRoutes);
+app.use('/grupo', grupoRoutes);
 
 
 //Server port
