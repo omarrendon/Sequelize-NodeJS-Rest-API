@@ -11,6 +11,8 @@ const carreraRoutes = require('./routes/carrera');
 const alumnoRoutes = require('./routes/alumnos');
 const maestroRoutes = require('./routes/maestros');
 const grupoRoutes = require('./routes/grupo');
+const administradorRouter = require('./routes/administrador');
+
 //Middleware
 app.use(morgan('dev'));
 app.use(express.json());
@@ -21,6 +23,7 @@ app.use('/alumno', alumnoRoutes);
 app.use('/carrera', carreraRoutes);
 app.use('/maestro', maestroRoutes);
 app.use('/grupo', grupoRoutes);
+app.use('/administrador', administradorRouter);
 
 
 //Server port
