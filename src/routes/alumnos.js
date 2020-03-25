@@ -1,13 +1,28 @@
-const { Router } = require('express');
+const { Router } = require("express");
 
 const router = Router();
-const alumnoController = require('../controllers/alumno.controller');
+
+const {
+//   getAlumno,
+//   getOneAlumno,
+  createAlumno
+//   updateAlumno,
+//   deleteAlumno,
+//   getAlumnoByCarrera
+} = require("../controllers/alumno.controller");
 
 
-// router.get('/alumno', (req, res )=> {
-//     res.send('alumno');
-// });
 
-router.post('/alumno', alumnoController);
+// router.get("/", getAlumno);
+
+// router.get("/:id_alumno", getOneAlumno);
+
+router.post("/", createAlumno);
+
+// router.delete("/", deleteAlumno);
+
+// router.put("/:id_alumno", updateAlumno);
+
+
 
 module.exports = router;

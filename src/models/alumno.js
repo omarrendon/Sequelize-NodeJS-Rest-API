@@ -23,15 +23,8 @@ const alumno = sequelize.define('alumno' , {
     fk_carrera : {
         type :Sequelize.INTEGER
     }
-}, {timestamp : false});
+}, {timestamp : false, freezeTableName: true, createdAt: false, updatedAt: false });
 
-alumno.hasMany(carrera, {
-    foreingKey : 'id_carrera',
-    sourceKey : 'id_alumno'
-})
-carrera.belongstTo(alumno, {
-    foreingKey : 'id_carrera',
-    sourceKey : 'id_carrera'
-})
+
 
 module.exports = alumno;
