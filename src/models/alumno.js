@@ -4,7 +4,7 @@ const sequelize = require('../database/database');
 const carrera = require('./carrera');
 
 const alumno = sequelize.define('alumno' , {
-    id_alumno : {
+    id_alumo : {
         type : Sequelize.INTEGER,
         primaryKey: true
     },

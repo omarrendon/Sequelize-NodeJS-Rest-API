@@ -106,7 +106,7 @@ async function updateCarrera(req, res) {
         });
       });
       return res.json({
-        message: "Project Updated",
+        message: "Carrera Updated",
         data: carreraUpdate
       });
     }

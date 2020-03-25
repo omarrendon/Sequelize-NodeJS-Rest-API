@@ -8,4 +8,5 @@ router.get('/:id_carrera', getOneCarrera);
 router.post('/', crearCarrera);
 router.delete('/:id_carrera', deleteCarrera);
 router.put('/:id_carrera', updateCarrera);
+
 module.exports = router;
