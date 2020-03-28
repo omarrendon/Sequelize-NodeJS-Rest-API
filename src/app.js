@@ -13,6 +13,7 @@ const maestroRoutes = require('./routes/maestros');
 const grupoRoutes = require('./routes/grupo');
 const administradorRouter = require('./routes/administrador');
 const periodoRoutes = require('./routes/periodo');
+const calificacionRoutes = require('./routes/calificacion');
 
 //Middleware
 app.use(morgan('dev'));
@@ -26,6 +27,7 @@ app.use('/maestro', maestroRoutes);
 app.use('/grupo', grupoRoutes);
 app.use('/administrador', administradorRouter);
 app.use('/periodo', periodoRoutes);
+app.use('/calificacion' , calificacionRoutes);
 
 
 //Server port
