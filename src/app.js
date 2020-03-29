@@ -16,7 +16,7 @@ const periodoRoutes = require('./routes/periodo');
 const calificacionRoutes = require('./routes/calificacion');
 const materiaRoutes = require('./routes/materia');
 const asistenciasRoutes = require('./routes/asistencias');
-
+const alumno_materiaRoutes = require('./routes/alumno_materia');
 //Middleware
 app.use(morgan('dev'));
 app.use(express.json());
@@ -32,6 +32,7 @@ app.use('/periodo', periodoRoutes);
 app.use('/calificacion' , calificacionRoutes);
 app.use('/materia', materiaRoutes);
 app.use('/asistencias' , asistenciasRoutes);
+app.use('/AlumnoMateria', alumno_materiaRoutes);
 
 //Server port
 app.listen(app.get('port'), () => {
