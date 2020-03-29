@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../database/database');
 
 const alumno = require('./alumno');
+const materia = require('./materia');
 
 const carrera =  sequelize.define('carrera' , {
     id_carrera : {
@@ -20,8 +21,10 @@ const carrera =  sequelize.define('carrera' , {
 },{ timestamps : false, freezeTableName: true}  );
 
 carrera.hasMany(alumno);
-// constraints: flase
+// carrera.hasMany(materia);
+// constraints: flase 
 alumno.belongsTo(carrera);
+// materia.belongsTo(carrera);
 
 
 module.exports = carrera;

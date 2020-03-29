@@ -60,22 +60,20 @@ async function createAdministrador(req, res) {
         ]
       }
     );
-    
-    if(newAdmin) {
-        return res.json({
-            message : 'Administrador Creado!!',
-            data : newAdmin
-        })
+
+    if (newAdmin) {
+      return res.json({
+        message: "Administrador Creado!!",
+        data: newAdmin
+      });
     }
-
-
   } catch (error) {
     console.log(error);
   }
 }
 
 async function deleteAdministrador(req, res) {
-    const { id_administrador } = req.params;
+  const { id_administrador } = req.params;
   try {
     const eliminarAdmin = await administrador.destroy({
       where: { id_administrador }
@@ -90,7 +88,7 @@ async function deleteAdministrador(req, res) {
 }
 
 async function updateAdministrador(req, res) {
-    const { id_administrador } = req.params;
+  const { id_administrador } = req.params;
   const {
     nombres,
     apellido_paterno,
@@ -113,22 +111,20 @@ async function updateAdministrador(req, res) {
       }
     });
 
-    
     if (adminUpdate.length > 0) {
-        adminUpdate.forEach(async nuevoAdmin => {
+      adminUpdate.forEach(async nuevoAdmin => {
         await nuevoAdmin.update({
-            nombres,
-            apellido_paterno,
-            apellido_materno,
-            matricula,
-            contrasenia
+          nombres,
+          apellido_paterno,
+          apellido_materno,
+          matricula,
+          contrasenia
         });
       });
       return res.json({
         message: "Aministrador Actualizado",
         data: adminUpdate
       });
-
     }
   } catch (err) {
     console.log(err);

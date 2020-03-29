@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../database/database');
 
+const materia = require('./materia');
+
 const maestro = sequelize.define('maestro' , {
     id_maestro : {
         type : Sequelize.INTEGER,
@@ -23,6 +25,8 @@ const maestro = sequelize.define('maestro' , {
     }
 }, {timestamp : false, freezeTableName: true, createdAt: false, updatedAt: false });
 
-
+// maestro.hasMany(materia);
+// materia.belongsTo(maestro);
+ 
 
 module.exports = maestro;
