@@ -15,6 +15,7 @@ const administradorRouter = require('./routes/administrador');
 const periodoRoutes = require('./routes/periodo');
 const calificacionRoutes = require('./routes/calificacion');
 const materiaRoutes = require('./routes/materia');
+const asistenciasRoutes = require('./routes/asistencias');
 
 //Middleware
 app.use(morgan('dev'));
@@ -30,6 +31,7 @@ app.use('/administrador', administradorRouter);
 app.use('/periodo', periodoRoutes);
 app.use('/calificacion' , calificacionRoutes);
 app.use('/materia', materiaRoutes);
+app.use('/asistencias' , asistenciasRoutes);
 
 //Server port
 app.listen(app.get('port'), () => {
