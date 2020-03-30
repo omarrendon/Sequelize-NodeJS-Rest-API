@@ -1,5 +1,7 @@
 const alumno = require('../models/alumno');
 
+const carrera = require('../models/carrera');
+
 // SELECT * FROM ALUMNO
 async function getAlumno(req, res) {
   try {
@@ -7,6 +9,9 @@ async function getAlumno(req, res) {
       attributes : ['nombres', 'apellido_paterno', 'apellido_materno', 'matricula', 'fk_carrera'],
       order : [
         ['nombres' , 'DESC']
+      ],
+      include : [
+        carrera
       ]
     });
 

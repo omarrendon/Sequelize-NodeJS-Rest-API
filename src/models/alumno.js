@@ -21,10 +21,22 @@ const alumno = sequelize.define('alumno' , {
         type :Sequelize.STRING
     },
     fk_carrera : {
-        type :Sequelize.INTEGER
+        type :Sequelize.INTEGER,
+        // references : {
+        //     model : {
+        //         tablaName : 'carrera'
+        //     },
+        //     key : 'id_carrera'
+        // }
     }
 }, {timestamp : false, freezeTableName: true, createdAt: false, updatedAt: false });
 
 
+// carrera.associate = function(models) {
+//     carrera.belongsTo(models.alumno , {
+//         as : 'carrera'
+//     });
+//     return carrera;
+// }
 
 module.exports = alumno;
