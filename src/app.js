@@ -54,9 +54,17 @@ alumno.belongsTo(carrera, { as : 'carrera' , foreignKey : 'fk_carrera'});
 materia.belongsTo(carrera, { as : 'materiaCarrera' , foreignKey : 'fk_carrera'});
 materia.belongsTo(maestro, { as : 'materiaMaestro' , foreignKey : 'fk_maestro'}); 
 
-// maestro.hasMany(materia, { as : 'materiaMaestro' , foreignKey : 'fk_maestro'});
-// carrera.hasMany(alumno, {as: 'carreraAlumno'});
+asistencias.belongsTo(materia , { as : 'asistenciasMateria' , foreignKey : 'fk_materia'});
+asistencias.belongsTo(alumno , { as : 'asistenciasAlumno' , foreignKey : 'fk_alumno'});
 
+alumno_materia.belongsTo(alumno , { as : 'aluAlumno' , foreignKey : 'fk_alumno'});
+alumno_materia.belongsTo(calificacion , { as : 'aluCalificaciones' , foreignKey : 'fk_calificacion'});
+alumno_materia.belongsTo(grupo , { as : 'aluGrupo' , foreignKey : 'fk_grupo'});
+alumno_materia.belongsTo(materia , { as : 'aluMateria' , foreignKey : 'fk_materia'});
+
+documento.belongsTo(alumno_materia , { as : 'docAlumno' , foreignKey : 'fk_alumno_materia'});
+documento.belongsTo(periodo , { as : 'docPeriodo' , foreignKey : 'fk_periodo'});
+documento.belongsTo(asistencias , { as : 'docAsistencias' , foreignKey : 'fk_asistencias'});
 
 
 //Server port

@@ -18,7 +18,6 @@ async function getMateria(req, res) {
         {
           model: carrera,
           as: "materiaCarrera"
-          // model : maestro , as : 'materiaMaestro'
         },
         {
           model: maestro,
