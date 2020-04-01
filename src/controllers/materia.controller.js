@@ -1,5 +1,8 @@
 const materia = require("../models/materia");
 
+const carrera = require("../models/carrera");
+const maestro = require("../models/maestro");
+
 async function getMateria(req, res) {
   try {
     const materias = await materia.findAll({
@@ -10,9 +13,19 @@ async function getMateria(req, res) {
         "fk_maestro",
         "fk_carrera"
       ],
-      order: [["nombre", "DESC"]]
+      order: [["nombre", "DESC"]],
+      include: [
+        {
+          model: carrera,
+          as: "materiaCarrera"
+          // model : maestro , as : 'materiaMaestro'
+        },
+        {
+          model: maestro,
+          as: "materiaMaestro"
+        }
+      ]
     });
-
     res.json({
       data: materias
     });
@@ -27,7 +40,18 @@ async function getOneMateria(req, res) {
 
   try {
     const materiaId = await materia.findOne({
-      where: { id_materia }
+      where: { id_materia },
+      include: [
+        {
+          model: carrera,
+          as: "materiaCarrera"
+          // model : maestro , as : 'materiaMaestro'
+        },
+        {
+          model: maestro,
+          as: "materiaMaestro"
+        }
+      ]
     });
     res.json({
       data: materiaId
@@ -138,11 +162,21 @@ async function getMateriaByCarrera(req, res) {
         "faltas_permitidas",
         "fk_maestro",
         "fk_carrera"
+      ], include: [
+        {
+          model: carrera,
+          as: "materiaCarrera"
+          // model : maestro , as : 'materiaMaestro'
+        },
+        {
+          model: maestro,
+          as: "materiaMaestro"
+        }
       ]
     });
 
     res.json({
-        byCarrera
+      byCarrera
     });
   } catch (error) {
     console.log(error);

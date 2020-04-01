@@ -29,7 +29,10 @@ async function getOneAlumno(req, res) {
   try{
     const oneAlumno = await alumno.findOne({
       where : {id_alumo},
-      attributes : [ 'nombres', 'apellido_paterno', 'apellido_materno', 'matricula', 'fk_carrera']
+      attributes : [ 'nombres', 'apellido_paterno', 'apellido_materno', 'matricula', 'fk_carrera'],
+      include : [{
+        model: carrera, as :'carrera'
+      }]
     });
     
     res.json({oneAlumno});
@@ -118,7 +121,10 @@ async function getAlumnoByCarrera(req, res) {
   try  {  
     const byCarrea = await alumno.findAll({
       where : {fk_carrera},
-      attributes : [ 'nombres', 'apellido_paterno', 'apellido_materno', 'matricula', 'fk_carrera']
+      attributes : [ 'nombres', 'apellido_paterno', 'apellido_materno', 'matricula', 'fk_carrera'],
+      include : [{
+        model: carrera, as :'carrera'
+      }]
     });
   
     res.json({byCarrea});

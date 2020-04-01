@@ -39,9 +39,22 @@ app.use('/documento', documentoRoutes);
 
 const alumno = require('./models/alumno');
 const carrera = require('./models/carrera');
+const maestro = require('./models/maestro');
+const grupo = require('./models/grupo');
+const administrador = require('./models/administrador');
+const periodo  = require('./models/periodo');
+const calificacion = require('./models/calificacion');
 const materia = require('./models/materia');
+const asistencias = require('./models/asistencia');
+const alumno_materia = require('./models/alumno_materia');
+const documento = require('./models/documento_generado');
 
-alumno.belongsTo(carrera, {as : 'carrera', foreignKey : 'fk_carrera'});
+alumno.belongsTo(carrera, { as : 'carrera' , foreignKey : 'fk_carrera'});
+
+materia.belongsTo(carrera, { as : 'materiaCarrera' , foreignKey : 'fk_carrera'});
+materia.belongsTo(maestro, { as : 'materiaMaestro' , foreignKey : 'fk_maestro'}); 
+
+// maestro.hasMany(materia, { as : 'materiaMaestro' , foreignKey : 'fk_maestro'});
 // carrera.hasMany(alumno, {as: 'carreraAlumno'});
 
 
