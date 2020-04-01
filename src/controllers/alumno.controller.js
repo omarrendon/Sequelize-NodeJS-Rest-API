@@ -10,9 +10,9 @@ async function getAlumno(req, res) {
       order : [
         ['nombres' , 'DESC']
       ],
-      include : [
-        carrera
-      ]
+      include : [{
+        model: carrera, as :'carrera'
+      }]
     });
 
     res.json(alumnos);

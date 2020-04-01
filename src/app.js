@@ -37,6 +37,15 @@ app.use('/asistencias' , asistenciasRoutes);
 app.use('/AlumnoMateria', alumno_materiaRoutes);
 app.use('/documento', documentoRoutes);
 
+const alumno = require('./models/alumno');
+const carrera = require('./models/carrera');
+const materia = require('./models/materia');
+
+alumno.belongsTo(carrera, {as : 'carrera', foreignKey : 'fk_carrera'});
+// carrera.hasMany(alumno, {as: 'carreraAlumno'});
+
+
+
 //Server port
 app.listen(app.get('port'), () => {
     console.log(`SERVIDOR EN EL PUERTO ${app.get('port')}`);

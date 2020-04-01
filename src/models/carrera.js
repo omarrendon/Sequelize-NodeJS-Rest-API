@@ -20,6 +20,7 @@ const carrera =  sequelize.define('carrera' , {
     }
 },{ timestamps : false, freezeTableName: true}  );
 
+
 // carrera.associate = function(models) {
 //     carrera.belongsTo(alumno , {
 //         as : 'carrera'
@@ -30,7 +31,7 @@ const carrera =  sequelize.define('carrera' , {
 // carrera.hasMany(alumno);
 // // carrera.hasMany(materia);
 // // constraints: flase 
-carrera.belongsTo(alumno);
+// carrera.belongsTo(alumno);
 // materia.belongsTo(carrera);
 
 
