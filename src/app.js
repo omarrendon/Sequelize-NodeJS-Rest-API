@@ -6,6 +6,15 @@ const app = express();
 //Settings
 app.set('port', process.env.PORT || 3000);
 
+//Middleware
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
+// // view engine setup
+// app.set('views','src/views');
+// app.set('view engine', 'pug');
+
 // Routes require
 const carreraRoutes = require('./routes/carrera');
 const alumnoRoutes = require('./routes/alumnos');
@@ -18,11 +27,7 @@ const materiaRoutes = require('./routes/materia');
 const asistenciasRoutes = require('./routes/asistencias');
 const alumno_materiaRoutes = require('./routes/alumno_materia');
 const documentoRoutes = require('./routes/documento_generado');
-
-//Middleware
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+// const inicio = require('./routes/index');
 
 // Routes
 app.use('/alumno', alumnoRoutes);
@@ -36,7 +41,9 @@ app.use('/materia', materiaRoutes);
 app.use('/asistencias' , asistenciasRoutes);
 app.use('/AlumnoMateria', alumno_materiaRoutes);
 app.use('/documento', documentoRoutes);
+// app.use('/inicio' , inicio); 
 
+// RELACIONES EN LA BASE DE DATOS
 const alumno = require('./models/alumno');
 const carrera = require('./models/carrera');
 const maestro = require('./models/maestro');
@@ -65,6 +72,10 @@ alumno_materia.belongsTo(materia , { as : 'aluMateria' , foreignKey : 'fk_materi
 documento.belongsTo(alumno_materia , { as : 'docAlumno' , foreignKey : 'fk_alumno_materia'});
 documento.belongsTo(periodo , { as : 'docPeriodo' , foreignKey : 'fk_periodo'});
 documento.belongsTo(asistencias , { as : 'docAsistencias' , foreignKey : 'fk_asistencias'});
+
+// app.get('/hola' , (req , res) => {
+//     res.render("hello.pug" , { mensaje : 'USANDO PUG EN NODE'});
+// });
 
 
 //Server port

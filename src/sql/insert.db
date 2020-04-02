@@ -1,0 +1,61 @@
+// Tabla grupo
+
+INSERT INTO grupo(clave_grupo,turno,clave_cuatrimestre,aula) VALUES (101,'matutino','isc', '3B');
+INSERT INTO grupo(clave_grupo,turno,clave_cuatrimestre,aula) VALUES (201,'matutino','isc', '1-B');
+INSERT INTO grupo(clave_grupo,turno,clave_cuatrimestre,aula) VALUES (301,'vespertino','isc', '2-A');
+
+// Tabla maestro
+
+INSERT INTO maestro(nombres,apellido_paterno,apellido_materno,matricula,contrasenia) VALUES ('Hector','Suarez','Barenca','HSBA','barenca');
+INSERT INTO maestro(nombres,apellido_paterno,apellido_materno,matricula,contrasenia) VALUES ('Freddy','Arturo','Morales','FAMO','freddy');
+INSERT INTO maestro(nombres,apellido_paterno,apellido_materno,matricula,contrasenia) VALUES ('Ludwing','Barcelos','Mendoza','LBME','ludwing');
+
+// Tabla periodo
+
+INSERT INTO periodo(anio,periodo) VALUES ('2020','Enero-Abril');
+INSERT INTO periodo(anio,periodo) VALUES ('2020','Mayo-Agosto');
+
+// Tabla carrera
+
+INSERT INTO carrera(nombre,numero_cuatrimestre,matricula) VALUES ('Ingenieria en sistemas',9,'ISC');
+c
+
+// Tabla alumno
+
+INSERT INTO alumno(nombre,apellido_paterno,apellido_materno,matricula,fk_carrera) VALUES ('Rodrigo','Ramirez','Lopez','2017ISC01',1);
+INSERT INTO alumno(nombre,apellido_paterno,apellido_materno,matricula,fk_carrera) VALUES ('Mauricio','Orozco','Aquino','2017ISC02',1);
+INSERT INTO alumno(nombre,apellido_paterno,apellido_mataterno,matricula,fk_carrera) VALUES ('Omar','Rendon','Cruz','2017ISC03',1);
+
+// Tabla materia
+
+INSERT INTO materia(nombre,horas,faltas_permitidas,fk_maestro,fk_carrera) VALUES ('Ingenieria de software II',48,5,1,1);
+INSERT INTO materia(nombre,horas,faltas_permitidas) VALUES ('Simulacion',48,5,3,1);
+INSERT INTO materia(nombre,horas,faltas_permitidas) VALUES ('Sistemas cliente servidor',48,5,2,1);
+
+// Tabla calificacion
+
+INSERT INTO calificacion(bimestre_uno,bimestre_dos,ordinario,promedio_bimestral) VALUES (8.0,8.0,8.0,8.0);
+INSERT INTO calificacion(bimestre_uno,bimestre_dos,ordinario,promedio_bimestral) VALUES (7.0,7.0,7.0,7.0);
+INSERT INTO calificacion(bimestre_uno,bimestre_dos,ordinario,promedio_bimestral) VALUES (9.0,9.0,9.0,9.0);
+
+// Tabla administrador
+
+INSERT INTO administrador(nombres,apellido_paterno,apellido_materno,matricula,contrasenia) VALUES ('Jorge','ap1_jorge','ap2_jorge','ingjorge','jorgeingeniero');
+
+// Tabla asistencias
+
+INSERT INTO asistencias(numero_asistencias,fk_materia,fk_alumno) VALUES (40,1,1);
+INSERT INTO asistencias(numero_asistencias,fk_materia,fk_alumno) VALUES (44,1,2);
+INSERT INTO asistencias(numero_asistencias,fk_materia,fk_alumno) VALUES (48,1,3);
+
+// Tabla alumno_materia
+
+INSERT INTO alumno_materia(fk_alumno,fk_materia,fk_grupo,fk_calificacion) VALUES (1,1,3,1);
+INSERT INTO alumno_materia(fk_alumno,fk_materia,fk_grupo,fk_calificacion) VALUES (2,1,3,2);
+INSERT INTO alumno_materia(fk_alumno,fk_materia,fk_grupo,fk_calificacion) VALUES (3,1,3,3);
+
+// Tabla documento_generado
+
+INSERT INTO alumno_materia(fk_alumno_materia,fk_periodo,fk_asistencias) VALUES (1,1,1);
+INSERT INTO alumno_materia(fk_alumno_materia,fk_periodo,fk_asistencias) VALUES (2,1,2);
+INSERT INTO alumno_materia(fk_alumno_materia,fk_periodo,fk_asistencias) VALUES (3,1,3);
