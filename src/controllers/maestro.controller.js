@@ -3,9 +3,12 @@ const maestro = require("../models/maestro");
 // SELECT * FROM ALUMNO
 async function getMaestro(req, res) {
   try {
-    const maestros = await maestro.findAll();
+    const maestros = await maestro.findAll({
+      attributes : ['id_maestro','nombres', 'apellido_paterno', 'apellido_materno', 'matricula', 'contrasenia'],
+
+    });
     res.json({
-      data: maestros
+     maestros
     });
   } catch (err) {
     console.log(err);
@@ -130,7 +133,7 @@ async function updateMaestro(req, res) {
         });
       });
       return res.json({
-        message: "Carrera Updated",
+        message: "Maestro Updated",
         data: maestroUpdate
       });
 

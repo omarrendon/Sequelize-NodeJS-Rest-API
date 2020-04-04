@@ -3,10 +3,12 @@ const carrera = require("../models/carrera");
 // SELECT * FROM CARRERA
 async function getCarrera(req, res) {
   try {
-    const carreras = await carrera.findAll();
-    res.json({
-      data: carreras
+    const carreras = await carrera.findAll({
+      attributes : ['id_carrera', 'nombre', 'numero_cuatrimestre', 'matricula']
     });
+    res.json(
+      carreras
+    );
   } catch (err) {
     console.log(err);
   }

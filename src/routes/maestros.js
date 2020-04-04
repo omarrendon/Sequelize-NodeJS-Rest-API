@@ -8,5 +8,5 @@ router.get('/', getMaestro);
 router.get('/:id_maestro', getOneMaestro);
 router.post('/', createMaestro);
 router.delete('/:id_maestro', deleteMaestro);
-router.post('/', updateMaestro)
+router.post('/', updateMaestro);
 module.exports = router;

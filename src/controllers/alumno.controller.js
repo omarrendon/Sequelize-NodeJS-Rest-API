@@ -6,10 +6,10 @@ const carrera = require('../models/carrera');
 async function getAlumno(req, res) {
   try {
     const alumnos = await alumno.findAll({
-      attributes : ['nombres', 'apellido_paterno', 'apellido_materno', 'matricula', 'fk_carrera'],
-      order : [
-        ['nombres' , 'DESC']
-      ],
+      attributes : ['id_alumo','nombres', 'apellido_paterno', 'apellido_materno', 'matricula', 'fk_carrera'],
+      // order : [
+      //   ['nombres' , 'DESC']
+      // ],
       include : [{
         model: carrera, as :'carrera'
       }]
@@ -86,7 +86,10 @@ async function updateAlumno(req, res) {
         nombres, apellido_paterno, apellido_materno, matricula, fk_carrera
       }, {
         where : {id_alumo}
-      });
+      }
+      
+      
+      );
 
       return res.json({
         message: "Alumno Updated",
