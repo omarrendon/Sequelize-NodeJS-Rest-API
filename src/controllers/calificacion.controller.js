@@ -12,6 +12,20 @@ async function getCalificacion(req, res) {
     }
 }
 
+async function getOneCalificacion(req, res) {
+    const { id_calificacion } = req.params;
+    try {
+        const id = await calificacion.findOne({
+            where : {id_calificacion},
+            atributes : ["bimestre_uno", "bimestre_dos", "ordinario", "promedio_bimestral", "promedio_final", "extraordinario", "titulo", "insuficiencia"]
+        })
+        res.json(id)        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 async function createCalificacion(req, res) {
     const {  bimestre_uno, bimestre_dos, ordinario, promedio_bimestral, promedio_final, extraordinario, titulo, insuficiencia} = req.body;
     console.log( bimestre_uno, bimestre_dos, ordinario, promedio_bimestral, promedio_final, extraordinario, titulo, insuficiencia);
@@ -86,5 +100,6 @@ module.exports = {
     getCalificacion,
     createCalificacion,
     deleteCalificacion,
-    updateCalificacion
+    updateCalificacion,
+    getOneCalificacion
 };

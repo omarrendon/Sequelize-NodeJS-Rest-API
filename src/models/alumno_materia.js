@@ -6,6 +6,9 @@ const alumno_materia = sequelize.define('alumno_materia' , {
         type : Sequelize.INTEGER,
         primaryKey: true
     },
+    faltas_totales : {
+        type : Sequelize.INTEGER
+    },
     fk_alumno : {
         type : Sequelize.INTEGER,
     },

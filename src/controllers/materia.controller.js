@@ -11,9 +11,10 @@ async function getMateria(req, res) {
         "horas",
         "faltas_permitidas",
         "fk_maestro",
-        "fk_carrera"
+        "fk_carrera",
+
       ],
-      order: [["nombre", "DESC"]],
+      // order: [["nombre", "DESC"]],
       include: [
         {
           model: carrera,
@@ -72,6 +73,7 @@ async function createMateria(req, res) {
         faltas_permitidas,
         fk_maestro,
         fk_carrera
+        
       },
       {
         fields: [
@@ -80,6 +82,7 @@ async function createMateria(req, res) {
           "faltas_permitidas",
           "fk_maestro",
           "fk_carrera"
+          
         ]
       }
     );
@@ -116,7 +119,6 @@ async function updateMateria(req, res) {
   const { id_materia } = req.params;
   const { nombre, horas, faltas_permitidas, fk_maestro, fk_carrera } = req.body;
   console.log(nombre, horas, faltas_permitidas, fk_maestro, fk_carrera);
-
   try {
     const materiaNueva = await materia.findAll({
       atributes: [
@@ -160,7 +162,8 @@ async function getMateriaByCarrera(req, res) {
         "horas",
         "faltas_permitidas",
         "fk_maestro",
-        "fk_carrera"
+        "fk_carrera",
+        "faltas"
       ], include: [
         {
           model: carrera,

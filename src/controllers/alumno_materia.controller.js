@@ -8,6 +8,7 @@ const calificacion = require("../models/calificacion");
 async function getAlumno_materia(req, res) {
   try {
     const alumnos = await alumno_materia.findAll({
+      atributes : ['faltas_totales'],
       include: [
         {
           model: alumno,
@@ -70,19 +71,20 @@ async function getAlumno_materiaByAlumno(req, res) {
 }
 
 async function createAlumno_materia(req, res) {
-  const { fk_alumno, fk_materia, fk_grupo, fk_calificacion } = req.body;
-  console.log(fk_alumno, fk_materia, fk_grupo, fk_calificacion);
+  const { faltas_totales , fk_alumno, fk_materia, fk_grupo, fk_calificacion } = req.body;
+  console.log(faltas_totales, fk_alumno, fk_materia, fk_grupo, fk_calificacion);
 
   try {
     const nuevo = await alumno_materia.create(
       {
+        faltas_totales,
         fk_alumno,
         fk_materia,
         fk_grupo,
         fk_calificacion
       },
       {
-        fields: ["fk_alumno", "fk_materia", "fk_grupo", "fk_calificacion"]
+        fields: ["faltas_totales", "fk_alumno", "fk_materia", "fk_grupo", "fk_calificacion"]
       }
     );
 
@@ -102,17 +104,18 @@ async function createAlumno_materia(req, res) {
 
 async function updateAlumno_materia(req, res) {
   const { id_alumno_materia } = req.params;
-  const { fk_alumno, fk_materia, fk_grupo, fk_calificacion } = req.body;
+  const { faltas_totales ,fk_alumno, fk_materia, fk_grupo, fk_calificacion } = req.body;
 
   try {
     const updateAlumno = await alumno_materia.findAll({
-      atributes: ["fk_alumno", "fk_materia", "fk_grupo", "fk_calificacion"],
+      atributes: ["faltas_totales" , "fk_alumno", "fk_materia", "fk_grupo", "fk_calificacion"],
       where: { id_alumno_materia }
     });
 
     if (updateAlumno.length > 0) {
       updateAlumno.forEach(async nueva => {
         await nueva.update({
+          faltas_totales,
           fk_alumno,
           fk_materia,
           fk_grupo,
